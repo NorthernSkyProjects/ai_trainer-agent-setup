@@ -1,0 +1,105 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read",
+      "Edit",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(ls *)",
+      "Bash(pytest *)",
+      "Bash(python3 -m pytest *)",
+      "Bash(.venv/bin/python -m pytest *)",
+      "Bash(ruff *)",
+      "Bash(.venv/bin/ruff *)",
+      "Bash(flask --app app db migrate *)",
+      "Bash(flask --app app db current *)",
+      "Bash(.venv/bin/flask --app app db migrate *)",
+      "Bash(.venv/bin/flask --app app db current *)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(systemctl restart *)",
+      "Bash(systemctl stop *)",
+      "Bash(systemctl start *)",
+      "Bash(flask --app app db upgrade *)",
+      "Bash(.venv/bin/flask --app app db upgrade *)",
+      "Bash(pip install *)",
+      "Bash(python3 -m pip install *)",
+      "Bash(ssh *)",
+      "Bash(nginx *)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.env.local)",
+      "Read(.env.production)",
+      "Read(.env.staging)",
+      "Read(//etc/app.env)",
+      "Read(instance/**)",
+      "Edit(./.git/**)",
+      "Bash(rm -rf /*)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-files.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git commit *)",
+            "timeout": 300,
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/verify-on-git.sh"
+          },
+          {
+            "type": "command",
+            "if": "Bash(git push *)",
+            "timeout": 300,
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/verify-on-git.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/lint-python.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "timeout": 300,
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/verify-on-stop.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "plansDirectory": "docs/plans"
+}

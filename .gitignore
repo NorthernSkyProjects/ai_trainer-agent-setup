@@ -1,0 +1,7 @@
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/.verify-on-stop
+.claude/.verify-on-stop-full
+.claude/.stop-guard/
+docs/plans/*
+!docs/plans/.gitkeep
