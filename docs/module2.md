@@ -102,6 +102,11 @@ Discovery выполнялся на реальном коде `ai_trainer` (кл
 - Recall после `/clear`: новая сессия видит наблюдения предыдущей; живой кадр —
   `screenshots/module2/11-memory-live.png` (инструкция ниже).
 
+> **Эксплуатационная заметка (2026-11-03).** После Discovery воркер остановлен
+> (`npx claude-mem stop`), плагин временно отключён (`claude plugin disable claude-mem@thedotmack`),
+> чтобы фоновые суммаризации не расходовали 5-часовой лимит Claude. 38 наблюдений остаются
+> в буфере; включить обратно: `claude plugin enable claude-mem@thedotmack && npx claude-mem start`.
+
 ### GSD native memory
 
 - `STATE.md` — позиция, решения, блокеры, следующий шаг.

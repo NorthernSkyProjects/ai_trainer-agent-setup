@@ -11,7 +11,10 @@
 - Решение: GSD-движок не вендорим (15 МБ); в репозитории — settings, hooks, команды,
   артефакты `.planning/` и install-скрипт. GSD-hooks перенесены из `settings.local.json`
   в версионируемый `.claude/settings.json`.
-- Дальше: снять живые кадры `/context` до/после, `/gsd-pause-work`, recall после `/clear`.
+- Квота: claude-mem observer сделал 39 фоновых сессий (~846k output + ~933k cache-write)
+  и вместе с Discovery исчерпал 5-часовой лимит Claude. Воркер остановлен, плагин временно
+  отключён; 38 наблюдений остаются в буфере до следующего включения.
+- Дальше: снять живые кадры `/context` до/после (`/compact`), опционально recall.
   Затем перегенерировать план Phase 1 и выполнять фазу на отдельной ветке.
 - Ловушка: Claude Code игнорирует per-hook `if` для Bash, поэтому `verify-on-git.sh` сам
   проверяет `.tool_input.command`; иначе он срабатывает на любой Bash-команде. GSD 1.20
