@@ -26,9 +26,9 @@ GitLab-репозитории `https://gitlab.com/ShelkunovES/ai_trainer`.
 |---|---|---|
 | Node.js | 24.22.2 | `node -v` (GSD 1.20 требует Node ≥24) |
 | npm | 11.19.1 | `npm -v` |
-| GSD Core | 1.20.0 | `cat .claude/gsd-core/VERSION`, 76 команд в `.claude/commands/` |
+| GSD Core | 1.20.0 | `cat .claude/gsd-core/VERSION` (после install), 76 команд в `.claude/commands/` |
 | claude-mem | 15.9.0 | `npx claude-mem doctor`, worker на `127.0.0.1:37700` |
-| Python (clone) | 3.12.3 + `.venv` | `ruff 0.17.3`, `pytest 9.2.0`, 141 тест зелёный |
+| Python (clone) | 3.12.3 + `.venv` | `ruff 0.17.3`, `pytest 9.2.0`, 645 тестов зелёные |
 
 GSD поставлен локально (`--claude --local --relative-includes`), поэтому артефакты и команды
 лежат в репозитории проекта, а не только в `~/.claude`. claude-mem поставлен с
