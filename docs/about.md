@@ -4,6 +4,10 @@
 Агент: **Claude Code** (dev-стенд, Финляндия) + общий `AGENTS.md` для OpenCode/Codex.
 Документ для сдачи ДЗ «Настройка AI-ориентированной среды разработки».
 
+> **Дополнение (модуль 2).** GSD-пайплайн, claude-mem, auto hooks, управление контекстом
+> и Discovery описаны в `docs/module2.md`; артефакты — в `.planning/`, свежие
+> скриншоты — в `screenshots/module2/`.
+
 ## 1. Стек и суть проекта
 
 IronMind — Flask-приложение для ведения тренировок с ИИ-генерацией планов (Google Gemini).
@@ -93,6 +97,7 @@ E2E-смоук на **Python Playwright** (`tests/e2e/test_smoke.py`): подн�
 | `screenshots/agent/env-block.png` | Слой прав: правило `deny` не даёт править `.env` («File is covered by a Read deny rule…»). |
 | `screenshots/agent/hook-protect.png` | Слой hook: `protect-files.sh` (PreToolUse) блокирует запись в секретный `*.env`. |
 | `screenshots/agent/linter.png` | Линтер-гейт: `verify-on-git.sh` останавливает коммит с ошибкой ruff (`F821`). |
+| `screenshots/module2/02-posttool-lint.png` | PostToolUse: `lint-python.sh` прогоняет `ruff check --fix` и возвращает агенту оставшийся `F821` после Edit. |
 | `screenshots/agent/memory.png` | Продолжение работы во второй сессии по `docs/plan.md`/`docs/memory.md`. |
 | `screenshots/agent/e2e.png` | Зелёный прогон e2e-теста Playwright (`1 passed`). |
 | `screenshots/agent/e2e-smoke.png` | Скриншот страницы, сохраняемый самим e2e-тестом (авто). |

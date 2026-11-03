@@ -12,10 +12,10 @@ FILE="${FILE//\\//}"
 
 case "$FILE" in
   .env|*/.env|*.env|*.env.local|*.env.production|*.env.staging)
-    echo "Blocked: '$FILE' is a secrets file. Use .env.example for templates; prod env is /etc/app.env." >&2
+    echo "Blocked: '$FILE' is a secrets file. Use .env.example for templates; prod env is /etc/ai_trainer.env." >&2
     exit 2 ;;
-  /etc/app.env|*/etc/app.env)
-    echo "Blocked: prod env /etc/app.env must not be edited by the agent." >&2
+  /etc/ai_trainer.env|*/etc/ai_trainer.env)
+    echo "Blocked: prod env /etc/ai_trainer.env must not be edited by the agent." >&2
     exit 2 ;;
   .git/*|*/.git/*)
     echo "Blocked: '$FILE' is inside .git/." >&2

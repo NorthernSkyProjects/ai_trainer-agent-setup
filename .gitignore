@@ -5,3 +5,13 @@ CLAUDE.local.md
 .claude/.stop-guard/
 docs/plans/*
 !docs/plans/.gitkeep
+
+# Module 2 runtime / local
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.env
+instance/
+.planning/quick/
+*.tmp
