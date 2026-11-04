@@ -21,7 +21,7 @@
 | 13 | `grep -q 'lint-python.sh' .claude/settings.json` | exit 0 |
 | 14 | `test -x .claude/hooks/protect-files.sh && test -x .claude/hooks/lint-python.sh` | exit 0 |
 | 15 | `git ls-files \| grep -E '(^\|/)\\.env$\|settings\\.local\|instance/'` | пусто |
-| 16 | `ls screenshots/module2/*.png` | не менее 7 файлов |
+| 16 | `ls screenshots/module2/*.png` | не менее 9 файлов |
 | 17 | `.venv/bin/ruff check .` (в клоне ai_trainer) | `All checks passed!` |
 | 18 | `.venv/bin/python -m pytest -q` (в клоне ai_trainer) | все тесты passed |
 | 19 | `bash -c 'printf "{\\"tool_input\\":{\\"file_path\\":\\".env\\"}}" \| .claude/hooks/protect-files.sh'` | `Blocked: '.env' ...`, exit 2 |
@@ -29,7 +29,12 @@
 
 ## Скриншоты
 
-Обязательные кадры:
+Обязательные по заданию:
+
+- `08-context-before.png` / `09-context-after.png` — usage до/после сжатия
+  (TUI: 112.1k / 1m, 11% → 75k / 1m, 7%).
+
+Дополнительные доказательства (01–07):
 
 - `01-env-block.png` — блокировка `.env`.
 - `02-posttool-lint.png` — PostToolUse ruff.
@@ -38,11 +43,13 @@
 - `05-progress.png` — progress/roadmap.
 - `06-commands.png` — быстрые команды.
 - `07-hooks-statusline.png` — hooks/statusline.
-- `08-context-before.png` / `09-context-after.png` — usage до/после сжатия.
+
+Опционально (для сдачи не требуются):
+
 - `10-checkpoint.png` — `/gsd-pause-work`.
 - `11-memory-live.png` — recall после `/clear`.
 
-Живые кадры снимаются по `docs/module2/screenshot-guide.md`.
+Инструкция для повторной съёмки — `docs/module2/screenshot-guide.md`.
 
 ## Ограничения
 
