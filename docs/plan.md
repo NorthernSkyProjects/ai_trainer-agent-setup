@@ -26,7 +26,8 @@
 - [x] 14. План Phase 1 (`01-01-PLAN.md`) + `SECURITY-CHECKLIST.md` + progress report.
 - [x] 15. Быстрые команды `/ctx`, `/handoff`, `/check`, `/discover` + auto hooks/statusline.
 - [x] 16. Документация модуля 2 (`docs/module2.md`, `verification.md`, `screenshot-guide.md`).
-- [ ] 17. Снять живые кадры: `/context` до/после, `/gsd-pause-work`, recall после `/clear`.
+- [x] 17. Снять обязательные живые кадры: `/context` до (11%) и после `/compact` (7%);
+      `10`/`11` (`/gsd-pause-work`, recall) — опциональны, для сдачи не требуются.
 
 ## Критерий готовности
 `pytest` зелёный + `ruff check .` чистый + `pytest -m e2e` зелёный + hooks воспроизводимы +

@@ -145,12 +145,14 @@ jq -r '.statusLine.type' .claude/settings.json
 | `screenshots/module2/05-progress.png` | `gsd-tools progress` + roadmap | готово |
 | `screenshots/module2/06-commands.png` | 76 быстрых команд GSD | готово |
 | `screenshots/module2/07-hooks-statusline.png` | 23 hook-блока + statusline | готово |
-| `screenshots/module2/08-context-before.png` | `/context` до сжатия | снять в живой сессии |
-| `screenshots/module2/09-context-after.png` | `/context` после `/compact` | снять в живой сессии |
-| `screenshots/module2/10-checkpoint.png` | `/gsd-pause-work` → HANDOFF | снять в живой сессии |
-| `screenshots/module2/11-memory-live.png` | recall после `/clear` | снять в живой сессии |
+| `screenshots/module2/08-context-before.png` | `/context` до сжатия: **112.1k / 1m (11%)** | готово |
+| `screenshots/module2/09-context-after.png` | `/context` после `/compact`: **75k / 1m (7%)** | готово |
+| `screenshots/module2/10-checkpoint.png` | `/gsd-pause-work` → HANDOFF | опционально |
+| `screenshots/module2/11-memory-live.png` | recall после `/clear` | опционально |
 
-Инструкция для четырёх живых кадров — `docs/module2/screenshot-guide.md`.
+`08` и `09` — реальные TUI-скрины Claude Code: до сжатия **112.1k (11%)**, после `/compact` —
+**75k (7%)**. `10` и `11` опциональны и для сдачи не требуются; инструкция —
+`docs/module2/screenshot-guide.md`.
 
 ### Ограничения и честные notes
 

@@ -162,7 +162,8 @@ GSD:
 - Context monitor: WARNING при ≤35% остатка, CRITICAL при ≤25%; после `PreCompact`
   состояние сбрасывается, чтобы новый цикл начинался с чистого листа.
 - Автосжатие: `/compact` или автоматическая компакция Claude Code. Сравнение
-  «usage до/после» — `08-context-before.png` и `09-context-after.png`.
+  «usage до/после» — `08-context-before.png` (**112.1k / 1m, 11%**) и
+  `09-context-after.png` (**75k / 1m, 7%**).
 - Чек-пойнты: `/gsd-pause-work` пишет `HANDOFF.json` и `continue-here.md`;
   `/gsd-resume-work` восстанавливает позицию после `/clear`.
 - Порог можно переопределить в `.planning/config.json`:
