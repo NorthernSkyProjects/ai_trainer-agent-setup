@@ -80,7 +80,7 @@ Claude Code infrastructure is versioned in `.claude/` (picked up on the DEV stan
   `.claude/.verify-on-stop`).
 - `rules/*.md` with `paths:` (python, templates) load lazily.
 - `skills/` — `ship-check`, `new-migration`, `new-route`, `e2e-smoke`, `quality-check`,
-  `copy-check`, `gates`. Plan-quality rubric in `docs/plan-eval.md`.
+  `copy-check`, `design-check` (UI по DESIGN.md), `gates`. Plan-quality rubric in `docs/plan-eval.md`.
 - Personal, gitignored: `CLAUDE.local.md`, `.claude/settings.local.json`, `docs/plans/*`.
 - Handoff across sessions: `docs/plan.md` + `docs/memory.md`. E2E is opt-in
   (`pytest -m e2e tests/e2e`, Playwright), excluded from the CI gate.

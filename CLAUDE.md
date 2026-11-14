@@ -68,7 +68,7 @@ Tests set up an isolated temp SQLite DB and env in `tests/conftest.py` *before* 
   `+ .verify-on-stop-full` для pytest; не даёт завершить ход при красном; с progress-guard).
 - Rules с `paths:` в `.claude/rules/` (python, templates) — грузятся лениво при работе с этими файлами.
 - Скиллы в `.claude/skills/`: `ship-check` (ruff + pytest + статус pipeline), `new-migration`, `new-route`,
-  `e2e-smoke`, `quality-check` (проверка ИИ-артефактов), `copy-check` (живой русский для UI/отчётов),
+  `e2e-smoke`, `quality-check` (проверка ИИ-артефактов), `copy-check` (живой русский для UI/отчётов), `design-check` (UI по DESIGN.md),
   `gates` (приёмка + Stop-hook). Eval-рубрика планов — `docs/plan-eval.md`.
 - Чинить до критерия: `/goal pytest зелёный и ruff чистый`. Планы — `docs/plans/` (plansDirectory),
   handoff между сессиями — `docs/plan.md` + `docs/memory.md`.
