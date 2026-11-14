@@ -9,6 +9,7 @@ GitLab-репозитории `https://gitlab.com/ShelkunovES/ai_trainer`.
 
 ## Содержание
 
+- [Модуль 3. Продуктовая аналитика и визуальная концепция](#модуль-3-продуктовая-аналитика-и-визуальная-концепция)
 - [Модуль 2. Агентно-ориентированный пайплайн (GSD)](#модуль-2-агентно-ориентированный-пайплайн-gsd)
 - [Модуль 1. Как агент работает в проекте](#модуль-1-как-агент-работает-в-проекте)
 - [Как воспроизвести e2e без полного дерева](#как-воспроизвести-e2e-без-полного-дерева)
@@ -166,6 +167,65 @@ jq -r '.statusLine.type' .claude/settings.json
   а не отчёт аудита.
 - Исходный код и `tests/e2e` живут в приватном GitLab; в этом репозитории их нет.
 
+## Модуль 3. Продуктовая аналитика и визуальная концепция
+
+Цель модуля — собрать полный контекст для агента и визуальную концепцию Kachlog на базе
+уже работающего дизайна `/next/plan` (shadcn/ui `base-nova`, Tailwind v4, Inter + Geist Mono,
+stone + teal). Новый бренд не вводится; DESIGN.md фиксирует текущую систему как as-built.
+
+### Артефакты
+
+| Требование | Файл |
+|---|---|
+| PRD и челлендж PRD | `docs/ux/prd.md`, `docs/ux/prd-challenge.md` |
+| Аналоги и feature matrix | `docs/ux/competitors.md` |
+| UX-паттерны (экраны, переходы, состояния) | `docs/ux/ux-patterns.md` |
+| Дизайн-система, 10 разделов | `DESIGN.md` |
+| Branding референсов (Firecrawl-схема) | `docs/ux/references/*` |
+| Demo-экран | `design/screens/plan.html` + `plan.css`, `plan.js` |
+| Скриншоты desktop/mobile, light/dark, состояния | `screenshots/module3/*` |
+| Design-loop | `docs/ux/design-loop/bar.md`, `docs/ux/design-loop.md` |
+| GSD discuss/plan | `.planning/phases/05-product-analytics-visual-concept/05-*` |
+| Claude Code ревью и валидация | `docs/module3/claude-review-1.md`, `claude-validation.md` |
+| Описание и чек-лист | `docs/module3.md`, `docs/module3/verification.md` |
+
+### Как проверить
+
+```bash
+test -f DESIGN.md && test -f docs/ux/competitors.md \
+  && test -f design/screens/plan.html \
+  && test -f screenshots/module3/plan-desktop-light.png \
+  && test -f docs/module3/claude-validation.md && echo OK
+
+python3 -m http.server 8767 --bind 127.0.0.1 --directory design
+# http://127.0.0.1:8767/screens/plan.html?state=ready
+# ?state=empty | loading | error | partial | ai | ai-error, + &theme=dark
+# ?state=ai-pending&freeze=1 — статичный pending для скриншота
+# &offline=1 — бейдж офлайна
+```
+
+### Скриншоты
+
+| Файл | Что показывает |
+|---|---|
+| `reference-plan-desktop.png` | текущий `/next/plan` (референс) |
+| `reference-workout-mobile.png` | текущая тренировка (референс) |
+| `plan-desktop-light.png` | demo, desktop, light |
+| `plan-mobile-light.png` | demo, mobile, light |
+| `plan-desktop-dark.png` | demo, desktop, dark |
+| `plan-mobile-dark.png` | demo, mobile, dark |
+| `state-empty.png`, `state-loading.png`, `state-error.png` | состояния (desktop light) |
+| `state-empty-mobile-dark.png`, `state-loading-mobile.png`, `state-error-mobile.png` | состояния (mobile/dark) |
+| `state-partial.png`, `offline-mobile.png` | partial и offline |
+| `ai-desktop.png`, `ai-mobile.png`, `ai-pending-desktop.png` | AI sheet |
+| `ai-pending-mobile.png`, `ai-error-desktop.png`, `ai-dark-desktop.png` | AI pending/error и dark |
+
+### Claude Code
+
+Два гейта: ревью плана (`claude-review-1.md`) и валидация реализации (`claude-validation.md`).
+Перед push: `python3 scripts/check_module3.py` — скрипт падает, если нет GO-вердикта или
+в индекс попали секреты/PDF урока.
+
 ## Модуль 1. Как агент работает в проекте
 
 **Какие инструкции агент читает**
@@ -226,6 +286,12 @@ CLAUDE.md                  # файл для Claude Code (@AGENTS.md + разб�
 docs/about.md              # модуль 1: paths-правило, навыки, права, hooks, скриншоты
 docs/module2.md            # модуль 2: установка GSD, Discovery, память, контекст, проверка
 docs/module2/              # verification.md + screenshot-guide.md
+docs/module3.md            # модуль 3: PRD, конкуренты, UX, DESIGN.md, demo, проверка
+docs/module3/              # verification.md + CLAUDE-BRIEF + вердикты Claude Code
+docs/ux/                   # PRD, конкуренты, UX-паттерны, design-loop, branding референсов
+DESIGN.md                  # as-built дизайн-система (/next/plan, shadcn base-nova)
+design/screens/            # demo-экран «Мой план / Сегодня» (HTML/CSS/JS)
+design/fonts/              # Inter + Geist Mono WOFF2 (OFL)
 docs/plan.md, memory.md    # память между сессиями (handoff)
 docs/plan-eval.md          # рубрика оценки ИИ-планов
 .planning/                 # артефакты GSD: PROJECT, REQUIREMENTS, ROADMAP, STATE,
@@ -238,4 +304,5 @@ docs/plan-eval.md          # рубрика оценки ИИ-планов
 scripts/install-agent-env.sh  # воспроизводимая установка Node 24 + GSD + claude-mem
 screenshots/agent/*.png    # модуль 1
 screenshots/module2/*.png  # модуль 2
+screenshots/module3/*.png  # модуль 3: demo, состояния, AI, референсы
 ```

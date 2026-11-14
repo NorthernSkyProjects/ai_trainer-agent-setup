@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "source": "https://linear.app/",
+    "method": "manual extraction in Firecrawl branding schema (no API key)",
+    "captured_at": "2026-11-14",
+    "usage": "reference only: structure, density, navigation. Not used as Kachlog palette or brand."
+  },
+  "colorScheme": "dark",
+  "colors": {
+    "primary": "#5E6AD2",
+    "background": "#08090A",
+    "surface": "#191D20",
+    "text": "#E2E4E7",
+    "mutedText": "#9C9DA1",
+    "border": "#2E2E32",
+    "accentPink": "#F79CE0",
+    "accentCyan": "#55CDFF",
+    "accentBlue": "#8FA4FF",
+    "accentGreen": "#89D196",
+    "accentOrange": "#FFC47C"
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": "Inter Display",
+      "body": "Inter",
+      "mono": "Berkeley Mono"
+    },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600
+    },
+    "tracking": {
+      "tight": "-0.02em"
+    }
+  },
+  "spacing": {
+    "baseUnit": 8,
+    "borderRadius": "8px",
+    "density": "dense"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#5E6AD2",
+      "text": "#FFFFFF",
+      "radius": "8px",
+      "height": "36px"
+    },
+    "buttonSecondary": {
+      "background": "#191D20",
+      "text": "#E2E4E7",
+      "border": "#2E2E32",
+      "radius": "8px"
+    },
+    "card": {
+      "background": "#08090A",
+      "border": "#2E2E32",
+      "radius": "12px"
+    },
+    "sidebar": {
+      "background": "#08090A",
+      "width": "240px",
+      "itemHeight": "32px"
+    }
+  },
+  "images": {
+    "logo": "linear.app logo (not copied)"
+  },
+  "what_we_take": [
+    "dense navigation with a clear active state",
+    "one semantic accent, everything else neutral",
+    "small type scale and generous line-height",
+    "quiet surfaces with 1px separators instead of shadows"
+  ],
+  "what_we_do_not_take": [
+    "brand colors and logo",
+    "marketing copy and product screenshots"
+  ]
+}

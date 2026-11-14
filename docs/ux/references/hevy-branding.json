@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "source": "https://www.hevyapp.com/",
+    "method": "manual extraction in Firecrawl branding schema (no API key)",
+    "captured_at": "2026-11-14",
+    "usage": "reference only: workout-log UX patterns. Not used as Kachlog palette or brand."
+  },
+  "colorScheme": "light",
+  "colors": {
+    "primary": "#1D83EA",
+    "background": "#FFFFFF",
+    "surface": "#F2F4F7",
+    "text": "#191A1B",
+    "mutedText": "#4A4E57",
+    "border": "#E3E1E8",
+    "dark": "#010101"
+  },
+  "typography": {
+    "fontFamilies": {
+      "heading": "Catamaran SemiBold",
+      "body": "Catamaran Regular"
+    },
+    "weights": {
+      "regular": 400,
+      "semibold": 600
+    }
+  },
+  "spacing": {
+    "baseUnit": 8,
+    "borderRadius": "12px",
+    "density": "comfortable"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#1D83EA",
+      "text": "#FFFFFF",
+      "radius": "10px",
+      "height": "44px"
+    },
+    "exerciseCard": {
+      "background": "#FFFFFF",
+      "border": "#E3E1E8",
+      "radius": "12px",
+      "pattern": "last session values pre-filled"
+    },
+    "restTimer": {
+      "pattern": "auto-start after a logged set"
+    }
+  },
+  "images": {
+    "logo": "Hevy logo (not copied)"
+  },
+  "what_we_take": [
+    "last-session values visible in the exercise card",
+    "large tap targets and one-thumb logging",
+    "PR badge at the moment of the record",
+    "streak/calendar as light motivation"
+  ],
+  "what_we_do_not_take": [
+    "social feed and leaderboards",
+    "brand blue, logo and marketing copy"
+  ]
+}
