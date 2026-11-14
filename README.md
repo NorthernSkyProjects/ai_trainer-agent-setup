@@ -169,9 +169,9 @@ jq -r '.statusLine.type' .claude/settings.json
 
 ## Модуль 3. Продуктовая аналитика и визуальная концепция
 
-Цель модуля — собрать полный контекст для агента и визуальную концепцию Kachlog на базе
-уже работающего дизайна `/next/plan` (shadcn/ui `base-nova`, Tailwind v4, Inter + Geist Mono,
-stone + teal). Новый бренд не вводится; DESIGN.md фиксирует текущую систему как as-built.
+Цель — собрать полный контекст для агента и визуальную концепцию Kachlog: аналоги,
+PRD-челлендж, UX-паттерны, палитра и DESIGN.md. Визуальная основа — shadcn/ui `base-nova`,
+Tailwind v4, stone-палитра, Inter + Geist Mono, teal для прогресса и PR.
 
 ### Артефакты
 
@@ -180,22 +180,20 @@ stone + teal). Новый бренд не вводится; DESIGN.md фикси
 | PRD и челлендж PRD | `docs/ux/prd.md`, `docs/ux/prd-challenge.md` |
 | Аналоги и feature matrix | `docs/ux/competitors.md` |
 | UX-паттерны (экраны, переходы, состояния) | `docs/ux/ux-patterns.md` |
-| Дизайн-система, 10 разделов | `DESIGN.md` |
+| Визуальная концепция, 10 разделов | `DESIGN.md` |
 | Branding референсов (Firecrawl-схема) | `docs/ux/references/*` |
 | Demo-экран | `design/screens/plan.html` + `plan.css`, `plan.js` |
 | Скриншоты desktop/mobile, light/dark, состояния | `screenshots/module3/*` |
 | Design-loop | `docs/ux/design-loop/bar.md`, `docs/ux/design-loop.md` |
 | GSD discuss/plan | `.planning/phases/05-product-analytics-visual-concept/05-*` |
-| Claude Code ревью и валидация | `docs/module3/claude-review-1.md`, `claude-validation.md` |
-| Описание и чек-лист | `docs/module3.md`, `docs/module3/verification.md` |
+| Описание сдачи | `docs/module3.md` |
 
-### Как проверить
+### Как посмотреть
 
 ```bash
 test -f DESIGN.md && test -f docs/ux/competitors.md \
   && test -f design/screens/plan.html \
-  && test -f screenshots/module3/plan-desktop-light.png \
-  && test -f docs/module3/claude-validation.md && echo OK
+  && test -f screenshots/module3/plan-desktop-light.png && echo OK
 
 python3 -m http.server 8767 --bind 127.0.0.1 --directory design
 # http://127.0.0.1:8767/screens/plan.html?state=ready
@@ -208,7 +206,7 @@ python3 -m http.server 8767 --bind 127.0.0.1 --directory design
 
 | Файл | Что показывает |
 |---|---|
-| `reference-plan-desktop.png` | текущий `/next/plan` (референс) |
+| `reference-plan-desktop.png` | текущий интерфейс продукта (референс) |
 | `reference-workout-mobile.png` | текущая тренировка (референс) |
 | `plan-desktop-light.png` | demo, desktop, light |
 | `plan-mobile-light.png` | demo, mobile, light |
@@ -219,12 +217,6 @@ python3 -m http.server 8767 --bind 127.0.0.1 --directory design
 | `state-partial.png`, `offline-mobile.png` | partial и offline |
 | `ai-desktop.png`, `ai-mobile.png`, `ai-pending-desktop.png` | AI sheet |
 | `ai-pending-mobile.png`, `ai-error-desktop.png`, `ai-dark-desktop.png` | AI pending/error и dark |
-
-### Claude Code
-
-Два гейта: ревью плана (`claude-review-1.md`) и валидация реализации (`claude-validation.md`).
-Перед push: `python3 scripts/check_module3.py` — скрипт падает, если нет GO-вердикта или
-в индекс попали секреты/PDF урока.
 
 ## Модуль 1. Как агент работает в проекте
 
@@ -286,10 +278,9 @@ CLAUDE.md                  # файл для Claude Code (@AGENTS.md + разб�
 docs/about.md              # модуль 1: paths-правило, навыки, права, hooks, скриншоты
 docs/module2.md            # модуль 2: установка GSD, Discovery, память, контекст, проверка
 docs/module2/              # verification.md + screenshot-guide.md
-docs/module3.md            # модуль 3: PRD, конкуренты, UX, DESIGN.md, demo, проверка
-docs/module3/              # verification.md + CLAUDE-BRIEF + вердикты Claude Code
+docs/module3.md            # модуль 3: что сделано, артефакты, как открыть demo
 docs/ux/                   # PRD, конкуренты, UX-паттерны, design-loop, branding референсов
-DESIGN.md                  # as-built дизайн-система (/next/plan, shadcn base-nova)
+DESIGN.md                  # визуальная концепция и дизайн-система Kachlog
 design/screens/            # demo-экран «Мой план / Сегодня» (HTML/CSS/JS)
 design/fonts/              # Inter + Geist Mono WOFF2 (OFL)
 docs/plan.md, memory.md    # память между сессиями (handoff)

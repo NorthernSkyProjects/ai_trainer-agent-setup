@@ -4,8 +4,8 @@
 
 ## Метод
 
-Firecrawl branding недоступен без ключа, поэтому сняли токены вручную в **той же схеме**,
-которую возвращает `scrape(url, formats=["branding"])`:
+Брендинг снят вручную по **схеме Firecrawl branding**, которую возвращает
+`scrape(url, formats=["branding"])`:
 
 ```json
 {

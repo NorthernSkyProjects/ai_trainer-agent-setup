@@ -1,7 +1,7 @@
 {
   "_meta": {
     "source": "https://www.hevyapp.com/",
-    "method": "manual extraction in Firecrawl branding schema (no API key)",
+    "method": "manual extraction using the Firecrawl branding schema",
     "captured_at": "2026-11-14",
     "usage": "reference only: workout-log UX patterns. Not used as Kachlog palette or brand."
   },

@@ -1,9 +1,8 @@
 # Kachlog — PRD (сжатая версия для модуля 3)
 
 **Дата:** 2026-11-14
-**Статус:** контекст для дизайн-концепта, не заменяет `.planning/PROJECT.md`
-**Источники:** `README.md`, `.planning/PROJECT.md`, `.planning/REQUIREMENTS.md`, `product_metrics.py`,
-`bp/*`, `web/src/app/*`, живой стенд `https://iitrainer.duckdns.org/next/plan`.
+**Статус:** контекст для дизайн-концепта.
+**Источники:** описание продукта, PRD, продуктовые метрики, текущие экраны.
 
 ## 1. Что это за продукт
 

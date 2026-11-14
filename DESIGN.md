@@ -1,13 +1,12 @@
 # DESIGN.md — Kachlog
 
-> **Статус:** as-built дизайн-система. Документ описывает то, что уже работает на
-> `https://iitrainer.duckdns.org/next/plan`, и фиксирует правила, чтобы новые экраны
-> оставались в той же shadcn-системе.
+> Визуальная концепция и дизайн-система Kachlog. Основа — shadcn/ui `base-nova`,
+> Tailwind v4, stone-палитра, Inter + Geist Mono. Teal — акцент прогресса и PR.
+> Документ фиксирует палитру, типографику, сетку, компоненты, состояния, AI UX,
+> motion и правила для новых экранов.
 >
-> **Источник правды:** `web/src/app/globals.css`, `web/src/design/**`, живой `/next/plan`.
+> **Референс интерфейса:** https://iitrainer.duckdns.org/next/plan
 > **Дата:** 2026-11-14.
-> **Стек:** Next.js 15, React 19, Tailwind v4, shadcn/ui (`base-nova`), `@base-ui/react`, Lucide.
-> **Шрифты:** Inter Variable (sans/heading), Geist Mono Variable (numbers). Оба с кириллицей.
 
 ---
 
@@ -97,9 +96,10 @@ Kachlog — не «мотивационный фитнес-лендинг», а 
 
 ### 2.6 Где менять
 
-Только `web/src/app/globals.css` (блоки `:root`, `.dark`, `@theme inline`). В компонентах —
-`bg-background`, `text-foreground`, `border-border`, `bg-primary`, `text-muted-foreground`,
-`bg-chart-2` (заливка) / `text-chart-4` (текст). Никаких `#hex` в JSX.
+Только CSS-переменные темы (`:root`, `.dark`, `@theme inline`). В компонентах —
+семантические классы `bg-background`, `text-foreground`, `border-border`, `bg-primary`,
+`text-muted-foreground`, `bg-chart-2` (заливка) / `text-chart-4` (текст).
+Никаких `#hex` в разметке и компонентах.
 
 ---
 
@@ -142,7 +142,7 @@ Fallback: `system-ui, sans-serif` / `ui-monospace, monospace`.
 
 - Google Fonts: Inter, Geist Mono (OFL).
 - Typewolf / Fonts In Use — проверка пар и контекста.
-- Текущая реализация `/next/plan` — фактическая шкала и веса.
+- Текущий интерфейс продукта — фактическая шкала и веса.
 
 ---
 
@@ -185,8 +185,8 @@ Fallback: `system-ui, sans-serif` / `ui-monospace, monospace`.
 
 ## 5. Components
 
-Все компоненты — shadcn/ui поверх Tailwind v4. Примитивы лежат в `web/src/components/ui/*`,
-рецепты — в `web/src/design/**/ui.ts`. Не редактируем примитивы вручную без необходимости;
+Все компоненты — shadcn/ui поверх Tailwind v4. Примитивы лежат в UI-слое,
+рецепты — в дизайн-системе экрана. Не редактируем примитивы вручную без необходимости;
 обёртки и варианты — через `cn()` и CVA.
 
 ### 5.1 Button
@@ -373,21 +373,20 @@ Fallback: `system-ui, sans-serif` / `ui-monospace, monospace`.
 
 ## 9. References
 
-### 9.1 Основной референс (as-built)
+### 9.1 Интерфейс продукта
 
-- Живой экран: `https://iitrainer.duckdns.org/next/plan`
-- Исходники: `web/src/app/globals.css`, `web/src/design/shell/*`,
-  `web/src/design/sections/plan-and-today/*`.
-- Скриншоты текущего дизайна: `screenshots/module3/reference-plan-desktop.png`,
-  `screenshots/module3/reference-workout-mobile.png` (модуль 2/3).
+- Референс: `https://iitrainer.duckdns.org/next/plan`
+- Скриншоты: `screenshots/module3/reference-plan-desktop.png`,
+  `screenshots/module3/reference-workout-mobile.png`.
+- Demo-экран: `design/screens/plan.html` + `screenshots/module3/plan-*.png`.
 
-**Что берём:** всё. Это не «вдохновение», а база.
+**Что берём:** всю систему — плотность, иерархию, палитру, типографику и состояния.
 
 ### 9.2 UI-система
 
 - shadcn/ui: https://ui.shadcn.com — `base-nova`, stone, semantic tokens.
 - Tailwind CSS v4: https://tailwindcss.com — `@theme`, `@custom-variant dark`.
-- Lucide: https://lucide.dev — один набор, толщина 1.5–2 px. В продукте — пакет Lucide; в статичном demo — inline SVG в том же стиле (1.8 px), без иконочного шрифта.
+- Lucide: https://lucide.dev — один набор, толщина 1.5–2 px. В demo — inline SVG того же стиля, без иконочного шрифта.
 - Base UI: https://base-ui.com — примитивы поведения.
 
 ### 9.3 Продуктовые референсы (паттерны, не стиль)
@@ -452,22 +451,17 @@ Fallback: `system-ui, sans-serif` / `ui-monospace, monospace`.
 
 ---
 
-## Приложение A. Известный долг
+## Приложение A. Ограничения концепта
 
-- Белая галочка «выполнено» на teal `chart-2` даёт ~2.3:1 — ниже 3:1 для нефоновой графики.
-  В demo используется тёмный ink на teal; в продукте это известный долг, который стоит
-  исправить при следующем визуальном проходе.
-- `--sidebar-primary` в `.dark` содержит синий `oklch(0.488 0.243 264.376)`. Он не используется
-  как акцент и не должен становиться вторым CTA-цветом.
-- В demo-экране inline SVG — Lucide-совместимые иконки, а не пакет Lucide. Это допустимо для
-  статичного артефакта; в продукте используется `lucide-react`.
-- Референс `/next/plan` снят в 1280×900, demo — в 1440×900; сравнение качественное, не
-  попиксельное. Для mobile-плана публичного референса нет — используется тот же design system
-  и экран тренировки как доменный ориентир.
+- Белые галочки «выполнено» на teal `chart-2` не используем: контраст ~2.3:1 ниже 3:1
+  для нефоновой графики. В demo — тёмный ink на teal.
+- Teal и amber — не текстовые цвета на светлом фоне (см. §2.5). Для текста — `chart-4`/`chart-5`
+  или обычный `foreground`.
+- Палитра проверена в light/dark; скриншоты — desktop 1440×900 и mobile 390×844.
 
 ## Приложение B. shadcn-правила для новых экранов
 
-1. Сначала проверь, есть ли примитив в `web/src/components/ui/`; не создавай новый без причины.
+1. Сначала проверь, есть ли подходящий примитив в UI-слое; не создавай новый без причины.
 2. Используй семантические токены (`bg-card`, `text-muted-foreground`, `border-border`).
 3. Варианты — через CVA/`cn()`, не через inline-style.
 4. Новый экран собирается из `AppShell` + `max-w-*` + карточек; не изобретай свой layout.
@@ -477,7 +471,7 @@ Fallback: `system-ui, sans-serif` / `ui-monospace, monospace`.
 8. Иконки — Lucide, `aria-hidden` для декоративных, `aria-label` для кнопок.
 9. Тёмная тема — проверяй каждый новый токен в `.dark`.
 10. Скриншоты — desktop 1440×900 и mobile 390×844, light + dark.
-11. Тема в Next — класс `.dark`; Flask/старый UI — `[data-theme="dark"]`. Demo поддерживает оба варианта.
+11. Тема: класс `.dark` или атрибут `[data-theme="dark"]`; demo поддерживает оба варианта.
 
 ## Приложение C. Чек-лист ревью экрана
 
@@ -494,13 +488,17 @@ Fallback: `system-ui, sans-serif` / `ui-monospace, monospace`.
 - [ ] Нет хардкода цветов.
 - [ ] Текст на русском, без канцелярита.
 
-## Приложение D. Источники и доказательства
+## Приложение D. Источники
 
-- Живой CSS: `https://iitrainer.duckdns.org/next/_next/static/css/7ff50812afa06d37.css`
-- Токены: `web/src/app/globals.css`
-- Компоненты: `web/src/design/**`
-- Скриншоты текущего дизайна: `screenshots/module3/reference-*.png`
-- Firecrawl branding: `docs/ux/references/*.json`
+- Интерфейс продукта: https://iitrainer.duckdns.org/next/plan
+- Скриншоты: `screenshots/module3/reference-*.png`
+- shadcn/ui: https://ui.shadcn.com
+- Tailwind CSS v4: https://tailwindcss.com
+- Lucide: https://lucide.dev
+- Coolors: https://coolors.co
+- Typewolf: https://www.typewolf.com
+- Google Fonts: https://fonts.google.com
+- Branding референсов: `docs/ux/references/*.json`
 - Конкуренты: `docs/ux/competitors.md`
 - UX-паттерны: `docs/ux/ux-patterns.md`
 - PRD и челлендж: `docs/ux/prd.md`, `docs/ux/prd-challenge.md`

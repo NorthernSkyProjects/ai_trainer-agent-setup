@@ -24,7 +24,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 2: AI Error Boundary & Dispatch** - Classify every AI failure into a closed reason code behind one run-or-enqueue dispatcher
 - [ ] **Phase 3: Workout Analysis, Retry & Exception Hardening** - One analysis implementation with specific reasons and user retry, then narrowed exceptions enforced by ruff
 - [ ] **Phase 4: Safety Guarantees & Defence-in-Depth** - Always-on exercise safety on every plan path, health disclaimer, internal-endpoint and secret hardening
-- [ ] **Phase 5: Product Analytics & Visual Concept** - Module 3 product/UX track: competitor research, PRD challenge, UX patterns, as-built DESIGN.md, demo screen, Claude Code review/validation
+- [ ] **Phase 5: Product Analytics & Visual Concept** - Competitor research, PRD challenge, UX patterns, DESIGN.md, demo screen and design-loop
 
 ## Phase Details
 
@@ -87,24 +87,24 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Planning notes**: Run `--research-phase`. Owner decisions needed: constructor enforcement (hard block vs warning; check first whether `bp/constructor` already filters, which decides bug fix vs new feature), disclaimer wording, and the live webhook secret length plus nginx `X-Forwarded-For` handling on PROD. Spike `SECRET_KEY_FALLBACKS` with `URLSafeTimedSerializer` for share tokens. Do SPL-03 first so later items in this phase have headroom; ship each remaining item as its own merge; `User.is_admin` migration is separate and additive.
 
 ### Phase 5: Product Analytics & Visual Concept
-**Goal:** As the product owner, I want a full research and visual concept package for Kachlog, so that the module 3 deliverables are grounded in the existing `/next/plan` shadcn design and validated by Claude Code.
+**Goal:** As a product team, I want a product analytics and visual concept package for Kachlog, so that the design system, UX patterns and demo are documented and reviewable.
 **Mode:** mvp
 **Depends on**: Nothing (parallel product/UX track; not part of the hardening milestone)
-**Requirements**: module 3 homework (analogs, context, GSD discuss/plan, UX patterns, colors, DESIGN.md, screen, screenshots)
+**Requirements**: product analytics and visual concept deliverables (analogs, context, GSD discuss/plan, UX patterns, colors, DESIGN.md, screen, screenshots)
 **Success Criteria** (what must be TRUE):
   1. Competitor analysis covers 6 apps with a feature matrix and sources
   2. PRD is challenged with 10 questions and explicit assumptions
   3. `05-DISCUSSION-LOG.md`, `05-CONTEXT.md`, `05-01-PLAN.md` exist
-  4. `DESIGN.md` documents the live `/next/plan` tokens in 10 sections
+  4. `DESIGN.md` documents the Kachlog visual language in 10 sections
   5. A responsive demo screen reproduces the design with 5 states, light/dark, desktop/mobile screenshots
-  6. Claude Code reviewed the plan and validated the implementation; final verdict is green
+  6. Design-loop has measurable mechanisms, two critique rounds and a verdict
 **Plans**: 1 (`.planning/phases/05-product-analytics-visual-concept/05-01-PLAN.md`)
-**Planning notes**: The product repo is not changed. The design base is `/next/plan`; no new palette. Claude Code gates block the GitHub push on a red verdict.
+**Planning notes**: Product code is not changed. The design base is the current Kachlog interface; no new palette.
 
 ## Progress
 
 **Execution Order:**
-Hardening milestone: phases 1 → 2 → 3 → 4. Phase 5 is a parallel product/UX track for module 3 and does not change product code.
+Hardening milestone: phases 1 → 2 → 3 → 4. Phase 5 is a parallel product/UX track and does not change product code.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|

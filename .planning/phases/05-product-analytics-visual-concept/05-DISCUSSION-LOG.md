@@ -5,21 +5,21 @@
 
 **Date:** 2026-11-14
 **Phase:** 05-product-analytics-visual-concept
-**Areas discussed:** Visual base, demo screen scope, competitor set, Claude Code gate, delivery target
+**Areas discussed:** Visual base, demo screen scope, competitor set, design-loop, delivery format
 
 ---
 
 ## Visual base
 
 **Options:**
-- A new palette (graphite + signal lime) built from scratch.
-- **Use the existing `/next/plan` shadcn design as the base (chosen).**
+- A new palette built from scratch.
+- **Use the current product interface as the base (chosen).**
 
-**Choice:** The current `/next/plan` implementation is the design system. DESIGN.md documents it
-as-built; no new brand palette. The user explicitly said: «за основу бери этот дизайн» and
-«хочу чтобы и далее дизайн был +- таким как мы брали его с ui.shadcn.com».
+**Choice:** The current Kachlog interface is the design base: shadcn/ui `base-nova`, stone palette,
+Inter + Geist Mono, teal for progress. DESIGN.md documents this system and the rules for new screens.
+No new brand palette.
 
-**Rejected:** graphite + lime, warm paper + oxblood, cold navy + cyan. They would create a second
+**Rejected:** graphite + lime, warm paper + oxblood, cold navy + cyan — they would create a second
 visual language next to the working product.
 
 ## Demo screen scope
@@ -27,14 +27,13 @@ visual language next to the working product.
 **Options:**
 - Recomposition of «Мой план / Сегодня» on the same tokens (chosen).
 - A new «AI plan review» screen.
-- A Next.js route in the product repo.
+- Changes in the product codebase.
 
 **Choice:** A standalone, self-contained recomposition of the existing plan screen, responsive,
 with 5 states and light/dark. It proves fidelity to the current design and does not change the
 product code or deploy anything.
 
-**Rejected:** new product surface (scope creep), product-repo changes (push to `main` deploys to
-PROD).
+**Rejected:** new product surface (scope creep), product-repo changes.
 
 ## Competitor set
 
@@ -45,29 +44,28 @@ PROD).
 **Choice:** Six apps that cover the core loop: logging (Hevy, Strong), AI plan (Fitbod, Alpha
 Progression), autoregulation (RP), programs (Boostcamp). Copy patterns, not brands.
 
-## Claude Code collaboration
+## Design-loop
 
 **Options:**
-- Skip external review.
-- **Two gates (chosen): review the plan before implementation; validate the implementation before push.**
+- No formal critique.
+- **Two rounds with brief/system/craft critics (chosen).**
 
-**Choice:** Plan is sent to Claude Code on DEV (`claude -p --permission-mode plan`). Its feedback
-is merged into the artifacts. After implementation, Claude Code validates DESIGN.md, UX patterns,
-screen and screenshots. A red verdict blocks the GitHub push until fixed.
+**Choice:** Define measurable mechanisms, run three critic roles for two rounds, fix the gaps and
+record the verdict. The result is in `docs/ux/design-loop.md`.
 
-**Rejected:** advisory-only review (user chose a blocking gate).
-
-## Delivery target
+## Delivery format
 
 **Options:**
-- Product GitLab repo.
-- **GitHub `NorthernSkyProjects/ai_trainer-agent-setup` (chosen), like module 2.**
+- Only DESIGN.md.
+- **DESIGN.md + research + UX patterns + demo screen + screenshots + GSD artifacts (chosen).**
 
-**Choice:** GitHub homework repo, one commit to `main` after a green Claude Code verdict.
+**Choice:** The submission includes the design concept and the evidence behind it: competitor
+research, PRD challenge, UX patterns, DESIGN.md, a responsive demo, screenshots and GSD discuss/plan
+artifacts.
 
 ## Deferred
 
-- Applying tokens to the real Next.js/Flask UI.
+- Applying tokens to the real product UI.
 - New product screens (AI plan review, weekly check-in).
 - Visual regression e2e in CI.
-- Firecrawl/Stitch automation (no API keys in this environment).
+- Firecrawl/Stitch automation.
