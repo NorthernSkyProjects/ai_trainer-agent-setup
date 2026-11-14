@@ -58,6 +58,11 @@
 - Тесты — в `tests/`, имена `test_*.py`; общие фикстуры — `tests/conftest.py`.
 - Код и сообщения коммитов — на английском; пользовательские тексты интерфейса — на русском.
 
+## Design
+- UI/UX follows `DESIGN.md`; read it before changing screens. Patterns — `docs/ux/ux-patterns.md`.
+- `/next` UI (`web/`) follows DESIGN.md; legacy Flask templates keep `static/style.css` until migrated.
+- Before finishing UI work, run the `design-check` skill.
+
 ## Rules of work
 - Ветка `main` автоматически деплоится в ПРОД: пушим только зелёное (pytest + ruff).
 - Перед коммитом: `.venv/bin/python -m pytest -q` и `.venv/bin/ruff check .`.

@@ -7,6 +7,7 @@
 >
 > **Референс интерфейса:** https://iitrainer.duckdns.org/next/plan
 > **Дата:** 2026-11-14.
+> **Scope:** `/next` UI (Next.js + shadcn/ui). Legacy Flask templates (`templates/`, `static/style.css`) keep the current visual language until migrated; do not mix the two systems.
 
 ---
 

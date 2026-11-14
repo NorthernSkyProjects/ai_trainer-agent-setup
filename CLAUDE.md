@@ -53,6 +53,12 @@ Tests set up an isolated temp SQLite DB and env in `tests/conftest.py` *before* 
 - Ruff: line length 120, rules E4/E7/E9/F, E501 ignored.
 - `scripts/legacy/` is an archive — don't extend it.
 
+## Design
+- UI/UX follows `DESIGN.md` (visual concept and design system); read it before changing screens.
+- Screen patterns and transitions: `docs/ux/ux-patterns.md`.
+- Scope: `/next` UI (`web/`) follows DESIGN.md; legacy Flask templates keep `static/style.css`.
+- Before finishing UI work, run the `design-check` skill.
+
 ## Агентская инфраструктура (.claude/)
 - Права и hooks — `.claude/settings.json` (в git): `.env`/`/etc/app.env`/`instance/` закрыты на чтение,
   `git push`/`systemctl restart`/`db upgrade` требуют подтверждения.
