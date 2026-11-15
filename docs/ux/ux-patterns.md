@@ -49,11 +49,23 @@
 
 ### A. Первый пользователь
 
-```
-/register → /consent → /onboarding (1…10) → /onboarding/mode
-  ├─ ИИ → /onboarding/generating → /plan
-  └─ конструктор → /plan-builder → /plan
-→ /workout/today → /workout/result → /plan
+Основной сценарий: регистрация → онбординг → AI-план → «Сегодня». Ветка конструктора
+показана для полноты; остальные сценарии ниже — текстом.
+
+```mermaid
+flowchart TD
+  A["/register"] --> B["/consent"]
+  B --> C["/onboarding 1…10"]
+  C --> D["/onboarding/mode"]
+  D -->|ИИ| E["/onboarding/generating"]
+  D -->|Конструктор| F["/plan-builder"]
+  E -->|успех| G["/plan — Сегодня"]
+  E -->|ошибка| H["Повторить генерацию"]
+  H --> E
+  F -->|черновик активирован| G
+  G --> I["/workout/today"]
+  I --> J["/workout/result"]
+  J --> G
 ```
 
 Правила:
